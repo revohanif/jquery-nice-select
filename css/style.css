@@ -1,6 +1,6 @@
 .nice-select {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
   float: left;
   clear: both;
@@ -25,21 +25,16 @@
   line-height: 40px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-
 .nice-select:hover {
   border-color: #d0dae5;
 }
-
-.nice-select:active,
-.nice-select.open,
-.nice-select:focus {
+.nice-select:active, .nice-select.open, .nice-select:focus {
   border-color: #88bfff;
 }
-
 .nice-select:after {
   position: absolute;
   top: 50%;
@@ -53,73 +48,61 @@
   -o-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
   -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+          transform: rotate(45deg);
   -webkit-transform-origin: 66% 66%;
-  transform-origin: 66% 66%;
+          transform-origin: 66% 66%;
   pointer-events: none;
   border-right: 2px solid #90a1b5;
   border-bottom: 2px solid #90a1b5;
 }
-
 .nice-select.open:after {
   -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+          transform: rotate(-135deg);
 }
-
 .nice-select.open .list {
   opacity: 1;
   -webkit-transform: scale(1) translateY(0);
-  transform: scale(1) translateY(0);
+          transform: scale(1) translateY(0);
   pointer-events: auto;
 }
-
 .nice-select.disabled {
   pointer-events: none;
   color: #90a1b5;
   border-color: #e7ecf2;
 }
-
 .nice-select.disabled:after {
   border-color: #cdd5de;
 }
-
 .nice-select.wide {
   width: 100%;
 }
-
 .nice-select.wide .list {
   right: 0 !important;
   left: 0 !important;
 }
-
 .nice-select.right {
   float: right;
 }
-
 .nice-select.right .list {
   right: 0;
   left: auto;
 }
-
 .nice-select.small {
   height: 36px;
   font-size: 12px;
   line-height: 34px;
 }
-
 .nice-select.small:after {
   width: 4px;
   height: 4px;
 }
-
 .nice-select.small .option {
   min-height: 34px;
   line-height: 34px;
 }
-
 .nice-select .list {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   position: absolute;
   z-index: 9;
   top: 100%;
@@ -132,20 +115,18 @@
   -o-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
   transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
   -webkit-transform: scale(0.75) translateY(-21px);
-  transform: scale(0.75) translateY(-21px);
+          transform: scale(0.75) translateY(-21px);
   -webkit-transform-origin: 50% 0;
-  transform-origin: 50% 0;
+          transform-origin: 50% 0;
   pointer-events: none;
   border-radius: 5px;
   background-color: #fff;
   -webkit-box-shadow: 0 0 0 1px rgba(68, 88, 112, 0.11);
-  box-shadow: 0 0 0 1px rgba(68, 88, 112, 0.11);
+          box-shadow: 0 0 0 1px rgba(68, 88, 112, 0.11);
 }
-
 .nice-select .list:hover .option:not(:hover) {
   background-color: transparent !important;
 }
-
 .nice-select .option {
   min-height: 40px;
   padding-right: 29px;
@@ -160,17 +141,12 @@
   font-weight: 400;
   line-height: 40px;
 }
-
-.nice-select .option:hover,
-.nice-select .option.focus,
-.nice-select .option.selected.focus {
+.nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
   background-color: #f6f7f9;
 }
-
 .nice-select .option.selected {
   font-weight: bold;
 }
-
 .nice-select .option.disabled {
   cursor: default;
   color: #90a1b5;
@@ -180,7 +156,6 @@
 .no-csspointerevents .nice-select .list {
   display: none;
 }
-
 .no-csspointerevents .nice-select.open .list {
   display: block;
 }
@@ -194,10 +169,10 @@ pre[class*=language-] {
   word-wrap: normal;
   word-break: normal;
   -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
   -webkit-hyphens: none;
-  hyphens: none;
+          hyphens: none;
   color: #445870;
   border-radius: 2px;
   font-family: Inconsolata, monospace;
@@ -213,13 +188,13 @@ pre[class*=language-] {
   padding: 18px 24px;
 }
 
-:not(pre)>code[class*=language-],
+:not(pre) > code[class*=language-],
 pre[class*=language-] {
   background: #f6f7f9;
 }
 
 /* Inline code */
-:not(pre)>code[class*=language-] {
+:not(pre) > code[class*=language-] {
   padding: 0 2px 1px;
 }
 
@@ -347,9 +322,7 @@ a:not(.button) {
   border-bottom: 1px solid transparent;
   outline: none;
 }
-
-a:not(.button):hover,
-a:not(.button):focus {
+a:not(.button):hover, a:not(.button):focus {
   border-bottom: 1px solid #88bfff;
 }
 
@@ -372,13 +345,10 @@ a:not(.button):focus {
   border-radius: 2px;
   background-color: #f6f7f9;
 }
-
-.box:before,
-.box:after {
+.box:before, .box:after {
   display: table;
   content: "";
 }
-
 .box:after {
   clear: both;
 }
@@ -390,14 +360,13 @@ label {
   color: #90a1b5;
   font-size: 11px;
 }
-
 label.right {
   float: right;
 }
 
 .button {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   width: auto;
   height: 42px;
   display: inline-block;
@@ -418,27 +387,20 @@ label.right {
   line-height: 42px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 @media screen and (max-width: 360px) {
   .button {
     width: 100%;
   }
-
   .button.light {
     margin: 18px 0 0;
   }
 }
-
-.button:hover,
-.button:focus {
+.button:hover, .button:focus {
   background-color: #4196fb;
 }
-
-.button:active,
-.button.nice-select.open {
+.button:active, .button.nice-select.open {
   background-color: #2d8bfa;
 }
-
 .button.light {
   margin-left: 24px;
   color: #55a1fb;
@@ -446,14 +408,10 @@ label.right {
   background-color: #fff;
   line-height: 40px;
 }
-
 .button.light:hover {
   border-color: #d0dae5;
 }
-
-.button.light:active,
-.button.light.nice-select.open,
-.button.light:focus {
+.button.light:active, .button.light.nice-select.open, .button.light:focus {
   border-color: #88bfff;
 }
 
@@ -461,13 +419,11 @@ label.right {
   margin-bottom: 60px;
   text-align: center;
 }
-
 @media screen and (min-width: 600px) {
   .header {
     padding: 0 18px;
   }
 }
-
 .header p {
   margin-bottom: 36px;
   color: #90a1b5;
@@ -477,7 +433,6 @@ label.right {
 .footer {
   text-align: center;
 }
-
 .footer p {
   margin-bottom: 90px;
 }
