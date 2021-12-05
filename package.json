@@ -17,16 +17,16 @@
 		"url": "https://github.com/hernansartorio/jquery-nice-select/issues"
 	},
 	"homepage": "https://github.com/hernansartorio/jquery-nice-select#readme",
-	"dependencies": {
-		"jquery": "^2.2.3"
-	},
 	"devDependencies": {
-		"gulp": "^3.9.0",
-		"gulp-autoprefixer": "^3.1.0",
-		"gulp-jshint": "^2.0.0",
-		"gulp-rename": "^1.2.2",
-		"gulp-sass": "^2.1.1",
-		"gulp-uglify": "^1.5.1",
-		"jshint": "^2.8.0"
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-jshint": "^2.1.0",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^5.0.0",
+		"gulp-uglify": "^3.0.2",
+		"jshint": "^2.13.1"
+	},
+	"dependencies": {
+		"jquery": "^3.6.0"
 	}
 }
