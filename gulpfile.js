@@ -5,7 +5,7 @@ var gulp = require( "gulp" ),
 ( autoprefixer = require( "gulp-autoprefixer" ) );
 
 gulp.task( "compress", function () {
-  gulp.src( "js/jquery.nice-select.js" )
+  gulp.src( [ "js/jquery.nice-select.js", "jquery.nice-select-with-search-multiple.js" ] )
     .pipe( uglify( { preserveComments: "license" } ) )
     .pipe( rename( { suffix: ".min" } ) )
     .pipe( gulp.dest( "js" ) );
