@@ -16,167 +16,184 @@ $arrow_color: $gray !default;
 
 // Style the dropdown
 .nice-select {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: #fff;
-  border-radius: $input_border_radius;
-  border: solid 1px $gray_light; 
   box-sizing: border-box;
-  clear: both;
-  cursor: pointer;
-  display: block;
+  position: relative;
   float: left;
+  clear: both;
+  width: auto;
+  height: $input_height;
+  display: block;
+  padding-right: $dropdown_padding + 12;
+  padding-left: $dropdown_padding;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: left !important;
+  white-space: nowrap;
+  border: solid 1px $gray_light;
+  border-radius: $input_border_radius;
+  outline: none;
+  background-color: #fff;
   font-family: inherit;
   font-size: $font_size;
   font-weight: normal;
-  height: $input_height;
   line-height: $input_height - 2;
-  outline: none;
-  padding-left: $dropdown_padding;
-  padding-right: $dropdown_padding + 12;
-  position: relative;
-  text-align: left !important;
-  -webkit-transition  
-: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  white-space: nowrap;
-  width: auto;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   &:hover {
     border-color: darken($gray_light, 5%);
   }
-  &:active, &:focus {
+
+  &:active,
+  &:focus {
     border-color: $primary_light;
   }
+
   // Arrow
-  &:after { 
-    border-bottom: 2px solid $arrow_color;
-    border-right: 2px solid $arrow_color;
-    content: '';
-    display: block; 
-    height: 5px;
-    margin-top: -4px;
-    pointer-events: none;
-    position: absolute; 
-    right: 12px; 
-    top: 50%; 
-    -webkit-transform-origin: 66% 66%; 
-        -ms-transform-origin: 66% 66%; 
-            transform-origin: 66% 66%;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    -webkit-transition  
-: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 12px;
     width: 5px;
+    height: 5px;
+    display: block;
+    margin-top: -4px;
+    content: '';
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 66% 66%;
+    -ms-transform-origin: 66% 66%;
+    transform-origin: 66% 66%;
+    pointer-events: none;
+    border-right: 2px solid $arrow_color;
+    border-bottom: 2px solid $arrow_color;
   }
-  
+
   &.open {
     @extend :active;
+
     &:after {
       -webkit-transform: rotate(-135deg);
-          -ms-transform: rotate(-135deg);
-              transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      transform: rotate(-135deg);
     }
+
     .list {
       opacity: 1;
-      pointer-events: auto;
       -webkit-transform: scale(1) translateY(0);
-          -ms-transform: scale(1) translateY(0);
-              transform: scale(1) translateY(0);
+      -ms-transform: scale(1) translateY(0);
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
     }
   }
+
   &.disabled {
-    border-color: lighten($gray_light, 2%);
-    color: $gray;
     pointer-events: none;
-    &:after { 
+    color: $gray;
+    border-color: lighten($gray_light, 2%);
+
+    &:after {
       border-color: lighten($arrow_color, 20%);
     }
   }
-  
+
   // Modifiers
   &.wide {
     width: 100%;
+
     .list {
-      left: 0 !important;
       right: 0 !important;
+      left: 0 !important;
     }
   }
+
   &.right {
     float: right;
+
     .list {
-      left: auto;
       right: 0;
+      left: auto;
     }
   }
+
   &.small {
-    font-size: $font_size_small;
     height: $input_height_small;
+    font-size: $font_size_small;
     line-height: $input_height_small - 2;
-    &:after { 
-      height: 4px;
+
+    &:after {
       width: 4px;
+      height: 4px;
     }
+
     .option {
-      line-height: $input_height_small - 2;
       min-height: $input_height_small - 2;
+      line-height: $input_height_small - 2;
     }
   }
-  
+
   // List and options
   .list {
-    background-color: #fff;
-    border-radius: $input_border_radius;
-    box-shadow: 0 0 0 1px rgba($gray_dark, .11);
     box-sizing: border-box;
-    margin-top: 4px;
+    position: absolute;
+    z-index: 9;
+    top: 100%;
+    left: 0;
     opacity: 0;
     overflow: hidden;
+    margin-top: 4px;
     padding: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 100%; left: 0;
-    -webkit-transform-origin: 50% 0;
-        -ms-transform-origin: 50% 0;
-            transform-origin: 50% 0;
-    -webkit-transform: scale(.75) translateY(- $input_height / 2);
-        -ms-transform: scale(.75) translateY(- $input_height / 2);
-            transform: scale(.75) translateY(- $input_height / 2);
-    -webkit-transition  
-: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+    -webkit-transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
     transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
-    z-index: 9;
+    -webkit-transform: scale(.75) translateY(- $input_height / 2);
+    -ms-transform: scale(.75) translateY(- $input_height / 2);
+    transform: scale(.75) translateY(- $input_height / 2);
+    -webkit-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    pointer-events: none;
+    border-radius: $input_border_radius;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba($gray_dark, .11);
+
     &:hover .option:not(:hover) {
       background-color: transparent !important;
     }
   }
+
   .option {
+    min-height: $input_height - 2;
+    padding-right: $dropdown_padding + 11;
+    padding-left: $dropdown_padding;
+    list-style: none;
     cursor: pointer;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    text-align: left;
+    outline: none;
     font-weight: 400;
     line-height: $input_height - 2;
-    list-style: none;
-    min-height: $input_height - 2;
-    outline: none;
-    padding-left: $dropdown_padding;
-    padding-right: $dropdown_padding + 11;
-    text-align: left;
-    -webkit-transition  
-: all 0.2s;
-    transition: all 0.2s;
-    &:hover, &.focus, &.selected.focus { 
+
+    &:hover,
+    &.focus,
+    &.selected.focus {
       background-color: $gray_lighter;
     }
-    &.selected { 
+
+    &.selected {
       font-weight: bold;
     }
+
     &.disabled {
-      background-color: transparent;
-      color: $gray;
       cursor: default;
+      color: $gray;
+      background-color: transparent;
     }
   }
 }
@@ -186,6 +203,7 @@ $arrow_color: $gray !default;
   .list {
     display: none;
   }
+
   &.open {
     .list {
       display: block;
