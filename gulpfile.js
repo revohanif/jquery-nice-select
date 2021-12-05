@@ -1,31 +1,43 @@
-var gulp = require( "gulp" ),
-  rename = require( "gulp-rename" );
-( uglify = require( "gulp-uglify" ) ),
-( sass = require( "gulp-sass" ) ),
-( autoprefixer = require( "gulp-autoprefixer" ) );
+const autoprefixer = require( "autoprefixer" );
+const dartSass = require( "sass" );
+const gulp = require( "gulp" );
+const gulpSass = require( "gulp-sass" );
+const postcss = require( "gulp-postcss" );
+const rename = require( "gulp-rename" );
+const uglify = require( "gulp-uglify" );
 
-gulp.task( "compress", function () {
-  gulp.src( [ "js/jquery.nice-select.js", "jquery.nice-select-with-search-multiple.js" ] )
-    .pipe( uglify( { preserveComments: "license" } ) )
+const scss = gulpSass( dartSass );
+
+function buildJs ( done ) {
+  gulp.src( [ "js/jquery.nice-select.js", "js/jquery.nice-select-with-search-multiple.js" ] )
+    .pipe( uglify() )
     .pipe( rename( { suffix: ".min" } ) )
     .pipe( gulp.dest( "js" ) );
-} );
+  done();
+}
 
-gulp.task( "sass", function () {
+function buildCss ( done ) {
   gulp.src( "scss/**/*.scss" )
-    .pipe( sass().on( "error", sass.logError ) )
-    .pipe( autoprefixer( { browsers: [ "> 1%", "last 3 versions" ] } ) )
+    .pipe( scss( {
+      precision: 10,
+      includePaths: [ "." ],
+    } ).on( 'error', scss.logError ) )
+    .pipe( postcss( [ autoprefixer() ] ) )
     .pipe( gulp.dest( "css" ) );
 
-  gulp.src( "scss/nice-select.scss" )
-    .pipe( autoprefixer( { browsers: [ "> 1%", "last 3 versions" ] } ) )
-    .pipe( rename( { suffix: "-prefixed", prefix: "_" } ) )
-    .pipe( gulp.dest( "scss" ) );
-} );
+  done();
+}
 
-gulp.task( "watch", function () {
-  gulp.watch( "js/*.js", [ "compress" ] );
-  gulp.watch( "scss/*.scss", [ "sass" ] );
-} );
+function watch ( done ) {
+  gulp.watch( "js/*.js", gulp.parallel( buildJs ) );
+  gulp.watch( "scss/*.scss", gulp.parallel( buildCss ) );
+  done();
+}
 
-gulp.task( "default", [ "compress", "sass" ] );
+const build = gulp.parallel( buildCss, buildJs );
+
+exports.css = buildCss;
+exports.js = buildJs;
+exports.build = build;
+exports.watch = watch;
+exports.default = build;
