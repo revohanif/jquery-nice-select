@@ -7,7 +7,7 @@ Made by Hernán Sartorio  */
 	$.fn.niceSelect = function (method) {
 
 		const defaults = {
-			searchable: true
+			searchable: false
 		};
 
 		let options = {};
@@ -46,8 +46,6 @@ Made by Hernán Sartorio  */
 				console.log('Method "' + method + '" does not exist.')
 			}
 			return this;
-		} else if (typeof method === 'object') {
-			options = $.extend({}, defaults, method);
 		}
 
 		// Hide native select
@@ -56,6 +54,12 @@ Made by Hernán Sartorio  */
 		// Create custom markup
 		this.each(function () {
 			let $select = $(this);
+
+			let dataOptions = {
+				searchable: $select.data('searchable')
+			};
+
+			options = $.extend({}, defaults, dataOptions, typeof method === 'object' ? method : {});
 
 			if (!$select.next().hasClass('nice-select')) {
 				create_nice_select($select);
