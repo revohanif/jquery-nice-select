@@ -7,7 +7,8 @@ Made by Hernán Sartorio  */
 	$.fn.niceSelect = function (method) {
 
 		const defaults = {
-			searchable: false
+			searchable: false,
+			placeholder: 'Search...'
 		};
 
 		let options = {};
@@ -56,7 +57,8 @@ Made by Hernán Sartorio  */
 			let $select = $(this);
 
 			let dataOptions = {
-				searchable: $select.data('searchable')
+				searchable: $select.data('searchable'),
+				placeholder: $select.data('placeholder') || $select.attr('placeholder')
 			};
 
 			options = $.extend({}, defaults, dataOptions, typeof method === 'object' ? method : {});
@@ -74,7 +76,7 @@ Made by Hernán Sartorio  */
 				.addClass($select.attr('multiple') ? 'has-multiple' : '')
 				.attr('tabindex', $select.attr('disabled') ? null : '0')
 				.html(options.searchable
-					? $select.attr('multiple') ? '<span class="multiple-options"></span><div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="Search..."/></div><ul class="list"></ul>' : '<span class="current"></span><div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="Search..."/></div><ul class="list"></ul>'
+					? $select.attr('multiple') ? `<span class="multiple-options"></span><div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="${options.placeholder}"/></div><ul class="list"></ul>` : `<span class="current"></span><div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="${options.placeholder}"/></div><ul class="list"></ul>`
 					: $select.attr('multiple') ? '<ul class="list"></ul>' : '<span class="current"></span><ul class="list"></ul>'
 				)
 			);
